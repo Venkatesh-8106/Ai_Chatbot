@@ -1,6 +1,6 @@
-# KHub Chatbot
+# Ai Chatbot
 
-KHub is a Flask-based AI chatbot application with a polished web interface, conversation history, and Gemini-powered responses. It lets users chat with an AI assistant while saving conversations in MongoDB for later use.
+ It is a Flask-based AI chatbot application with a polished web interface, conversation history, and Gemini-powered responses. It lets users chat with an AI assistant while saving conversations in MongoDB for later use.
 
 ## Features
 - Responsive chat interface with light and dark themes
