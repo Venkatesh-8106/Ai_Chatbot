@@ -24,10 +24,7 @@ app.register_blueprint(conversation_bp)
 
 if __name__ == "__main__":
 
-    print("=" * 50)
-    print("🤖 AI Chatbot Started")
-    print(f"Running on http://127.0.0.1:{Config.PORT}")
-    print("=" * 50)
+    
 
     app.run(
         debug=True,
