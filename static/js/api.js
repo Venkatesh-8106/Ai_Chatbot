@@ -13,7 +13,17 @@ const API = {
             });
 
             if (!response.ok) {
-                throw new Error("Failed to connect.");
+                const text = await response.text();
+                let errorMessage = response.statusText;
+
+                try {
+                    const json = JSON.parse(text);
+                    errorMessage = json?.details || json?.error || errorMessage;
+                } catch (e) {
+                    if (text) errorMessage = text;
+                }
+
+                throw new Error(errorMessage);
             }
 
             return await response.json();

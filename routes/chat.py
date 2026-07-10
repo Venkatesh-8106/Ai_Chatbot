@@ -35,27 +35,33 @@ def chat():
     # Load previous messages
     history = get_messages(conversation_id)
 
-    # Get AI response
-    ai_response = generate_response(
-        message,
-        history
-    )
+    try:
+        # Get AI response
+        ai_response = generate_response(
+            message,
+            history
+        )
 
-    # Save user message
-    save_message(
-        conversation_id,
-        "user",
-        message
-    )
+        # Save user message
+        save_message(
+            conversation_id,
+            "user",
+            message
+        )
 
-    # Save AI message
-    save_message(
-        conversation_id,
-        "assistant",
-        ai_response
-    )
+        # Save AI message
+        save_message(
+            conversation_id,
+            "assistant",
+            ai_response
+        )
 
-    return jsonify({
-        "conversation_id": conversation_id,
-        "response": ai_response
-    })
+        return jsonify({
+            "conversation_id": conversation_id,
+            "response": ai_response
+        })
+    except Exception as exc:
+        return jsonify({
+            "error": "Failed to generate AI response",
+            "details": str(exc)
+        }), 500
