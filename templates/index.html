@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="brand">
+                <span class="brand-name">Chat AI</span>
+            </div>
+
+            <button id="newChatBtn">+ New Chat</button>
+            <input type="text" id="searchChat" placeholder="Search conversation...">
+
+            <div id="conversationList"></div>
+
+            <div class="sidebar-actions-block">
+                <button id="deleteAllBtn" title="Delete all chats">Delete All</button>
+                <div class="sidebar-actions">
+                    <button id="exportBtn" title="Export chat">⤓</button>
+                    <button id="themeToggle" title="Toggle dark mode">☀︎/☾</button>
+                </div>
+            </div>
+        </aside>
+
+        <main class="chat-container">
+            <header class="chat-header">
+                <div>
+                    <h2>Chat AI</h2>
+                </div>
+            </header>
+
+            <div class="chat-box" id="chatBox"></div>
+
+            <div class="typing" id="typing">Assistant is typing...</div>
+
+            <div class="input-area">
+                <textarea id="messageInput" placeholder="Type your message..."></textarea>
+                <button id="sendBtn">Send</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/ui.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
