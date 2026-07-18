@@ -1,82 +1,207 @@
-# Ai Chatbot
+# AI Chatbot
 
- It is a Flask-based AI chatbot application with a polished web interface, conversation history, and Gemini-powered responses. It lets users chat with an AI assistant while saving conversations in MongoDB for later use.
+A Flask-based AI chatbot application with a modern web interface, conversation history, and Google Gemini integration. The application allows users to interact with an AI assistant while automatically storing conversations in MongoDB for future access.
+
+---
+
+## Overview
+
+This project provides:
+
+- Interactive AI-powered conversations
+- Persistent chat history using MongoDB
+- Conversation management (create, switch, and delete chats)
+- Clean and responsive web interface
+- REST API for chatbot communication
+- Google Gemini integration for AI-generated responses
+
+---
 
 ## Features
-- Responsive chat interface with light and dark themes
-- Sidebar for managing conversations
-- Create, switch, and delete chat sessions
-- Save chat history in MongoDB
-- AI responses powered by Google Gemini
-- Backend API route for sending chat messages
 
-## Tech Stack
-- Flask 3.1
-- Flask-CORS
-- Google Generative AI
-- PyMongo
-- python-dotenv
+- Responsive chat interface
+- Light and dark theme support
+- Conversation sidebar
+- Create new chat sessions
+- Switch between conversations
+- Delete conversations
+- Automatic chat history storage in MongoDB
+- AI-generated responses using Google Gemini
+- Flask REST API backend
+
+---
+
+## Technology Stack
+
+| Category | Technology |
+|----------|------------|
+| Backend | Flask 3.1 |
+| Database | MongoDB |
+| AI Model | Google Gemini |
+| Database Driver | PyMongo |
+| Cross-Origin Support | Flask-CORS |
+| Environment Management | python-dotenv |
+
+---
 
 ## Prerequisites
-Before running the app, make sure you have:
-- Python 3.9 or newer
-- A MongoDB instance running locally or on MongoDB Atlas
-- A Gemini API key from Google AI Studio
+
+Before running the application, ensure the following are installed:
+
+- Python 3.9 or later
+- MongoDB (Local or MongoDB Atlas)
+- Google Gemini API Key from Google AI Studio
+- pip (Python Package Manager)
+
+---
 
 ## Installation
-1. Open the project folder:
-   cd khub
 
-2. Create and activate a virtual environment (recommended):
-   python -m venv my
-   .\my\Scripts\activate
+### 1. Clone the repository
 
-3. Install the required Python packages:
-   pip install -r requirements.txt
+```bash
+git clone <repository-url>
+cd khub
+```
 
-4. Create a .env file in the project root with the following values:
+### 2. Create a virtual environment
 
-   GEMINI_API_KEY=your_gemini_api_key_here
-   MONGO_URI=mongodb://localhost:27017
-   DATABASE_NAME=khub
-   PORT=3009
+```bash
+python -m venv my
+```
+
+### 3. Activate the virtual environment
+
+**Windows**
+
+```bash
+my\Scripts\activate
+```
+
+**Linux / macOS**
+
+```bash
+source my/bin/activate
+```
+
+### 4. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Environment Configuration
+
+Create a `.env` file in the project root.
+
+```env
+GEMINI_API_KEY=your_gemini_api_key_here
+MONGO_URI=mongodb://localhost:27017
+DATABASE_NAME=khub
+PORT=3009
+```
 
 ### Environment Variables
-- GEMINI_API_KEY: Your Google Gemini API key
-- MONGO_URI: Your MongoDB connection string
-- DATABASE_NAME: Name of the MongoDB database to use
-- PORT: Port for the Flask app (default is 3009)
+
+| Variable | Description |
+|----------|-------------|
+| `GEMINI_API_KEY` | Google Gemini API Key |
+| `MONGO_URI` | MongoDB connection string |
+| `DATABASE_NAME` | MongoDB database name |
+| `PORT` | Flask server port |
+
+---
 
 ## Running the Application
-Start the server with:
 
+Start the Flask server.
+
+```bash
 python app.py
+```
 
-Then open your browser at:
+Once the server starts successfully, open:
 
+```
 http://127.0.0.1:3009
+```
 
-## How to Use
-1. Open the app in your browser.
-2. Type a message in the chat box.
-3. The assistant will respond using Gemini.
-4. Use the sidebar to manage and switch between conversations.
+---
+
+## Usage
+
+1. Open the application in your browser.
+2. Enter a message in the chat input.
+3. Submit the message.
+4. The application sends the request to Google Gemini.
+5. The generated response is displayed in the chat window.
+6. Conversations are automatically saved in MongoDB.
+7. Use the sidebar to create, switch, or delete conversations.
+
+---
 
 ## Project Structure
-- app.py: Main Flask application entry point
-- routes/: API routes for chat and conversation management
-- services/: Gemini integration logic
-- templates/: HTML frontend templates
-- static/: CSS and JavaScript assets
-- database/: MongoDB connection and persistence helpers
-- config.py: Application configuration loaded from .env
+
+```
+khub/
+│
+├── app.py                  # Application entry point
+├── config.py               # Configuration loader
+├── database/               # MongoDB connection and helpers
+├── routes/                 # API endpoints
+├── services/               # Gemini service implementation
+├── static/                 # CSS, JavaScript, and static assets
+├── templates/              # HTML templates
+├── requirements.txt
+└── .env
+```
+
+---
+
+## API
+
+### Send Chat Message
+
+**Endpoint**
+
+```
+POST /chat
+```
+
+**Request**
+
+```json
+{
+  "message": "Hello"
+}
+```
+
+**Response**
+
+```json
+{
+  "response": "Hello! How can I help you today?"
+}
+```
+
+---
 
 ## Troubleshooting
-- If the app shows an API error, verify that GEMINI_API_KEY is set correctly.
-- If MongoDB connections fail, check that MONGO_URI points to a working MongoDB instance.
-- If the port is already in use, change the PORT value in your .env file.
-- If dependencies are missing, run:
 
-  pip install -r requirements.txt
+If you encounter any issues while running the application, verify the following:
 
+| Issue | Solution |
+|-------|----------|
+| Gemini API errors | Verify that `GEMINI_API_KEY` is valid and correctly configured. |
+| MongoDB connection failure | Ensure MongoDB is running and `MONGO_URI` is correct. |
+| Port already in use | Change the `PORT` value in the `.env` file. |
+| Missing dependencies | Run `pip install -r requirements.txt`. |
+| Module import errors | Confirm that the virtual environment is activated before running the application. |
 
+---
+
+## License
+
+This project is intended for educational and development purposes. Modify and extend it as needed.
